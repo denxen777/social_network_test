@@ -1,0 +1,8 @@
+.data {
+  width: 65%;
+  height: max-content;
+  border-radius: 10px;
+  border: 1px solid #9d9898;
+  background-color: #fff;
+  padding: 20px;
+}

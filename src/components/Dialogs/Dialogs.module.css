@@ -1,0 +1,44 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 7fr;
+  grid-column-gap: 15px;
+  padding: 15px;
+}
+
+.dialogsItem {
+  border-right: 1px solid #9d9898;
+  border-radius: 5px;
+  min-height: 300px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  padding-right: 15px;
+}
+
+.messages {
+  padding: 15px;
+  border: 1px solid #9d9898;
+  border-radius: 10px;
+  display: grid;
+  background-color: #fff;
+  align-self: start;
+}
+
+.addMessage {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.addMessage textarea {
+  resize: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding: 7px;
+  outline: none;
+}
+
+.addMessage button {
+  padding: 5px;
+  height: max-content;
+}

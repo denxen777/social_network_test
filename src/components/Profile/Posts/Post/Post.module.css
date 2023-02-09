@@ -1,0 +1,22 @@
+.post {
+  min-height: 80px;
+  border: 1px solid #9d9898;
+  border-radius: 10px;
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.user {
+  width: 20%;
+}
+
+.user img {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+}
+
+.message {
+  text-align: justify;
+  word-break: break-all;
+}

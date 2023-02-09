@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Lucida Sans Unicode, serif;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-areas: 'h h' 'n c';
+  grid-template-columns: 2fr 10fr;
+  grid-template-rows: min-content 1fr;
+  grid-gap: 40px 10px;
+  margin: 0 auto;
+  width: 70%;
+}
+
+.wrapper_content {
+  grid-area: c;
+  background-color: #cfe5e9;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+  .wrapper {
+    width: 100%;
+  }
+}
