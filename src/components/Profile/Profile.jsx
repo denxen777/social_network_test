@@ -5,7 +5,7 @@ export function Profile(props) {
   return (
     <div>
       <ProfileInfo user={props.state.user}/>
-      <Posts state={props.state} store={props.store}/>
+      <Posts state={props.state} dispatch={props.dispatch}/>
     </div>
   );
 }

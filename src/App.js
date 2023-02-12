@@ -1,5 +1,5 @@
-import {Route, Routes} from "react-router-dom";
 import './App.css';
+import {Route, Routes} from "react-router-dom";
 import {Header} from "./components/Header/Header";
 import {Navbar} from "./components/Navbar/Navbar";
 import {Profile} from "./components/Profile/Profile";
@@ -15,9 +15,15 @@ export function App(props) {
       <Navbar/>
       <div className='wrapper_content'>
         <Routes>
-          <Route path='/profile' element={<Profile state={props.state.profilePage} store={props.store}/>}/>
+          <Route path='/profile' element={<Profile state={props.state.profilePage}
+                                                   dispatch={props.dispatch}
+          />}/>
+
           <Route path='/news' element={<News/>}/>
-          <Route path='/dialogs' element={<Dialogs state={props.state.dialogsPage} store={props.store}/>}/>
+          <Route path='/dialogs' element={<Dialogs state={props.state.dialogsPage}
+                                                   dispatch={props.dispatch}
+          />}/>
+
           <Route path='/friends' element={<Friends state={props.state.friendsPage}/>}/>
           <Route path='/settings' element={<Settings/>}/>
         </Routes>
