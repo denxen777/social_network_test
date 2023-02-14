@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 function rerenderAllTree() {
   root.render(
     <BrowserRouter>
-      <App state={reduxStore.getState()} dispatch={reduxStore.dispatch}/>
+      <App store={reduxStore}/>
     </BrowserRouter>
   );
 }
