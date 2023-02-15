@@ -1,0 +1,24 @@
+.userData {
+  display: flex;
+  justify-content: space-around;
+}
+
+.avatar {
+  width: 30%;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid #9d9898;
+}
+
+.data {
+  width: 65%;
+  height: max-content;
+  border-radius: 10px;
+  border: 1px solid #9d9898;
+  background-color: #fff;
+  padding: 20px;
+}

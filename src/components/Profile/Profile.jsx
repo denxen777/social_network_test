@@ -1,13 +1,11 @@
-import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
+import {UserDataContainer} from "./UserData/UserDataContainer";
 import {PostsContainer} from "./Posts/PostsContainer";
 
-export function Profile(props) {
-  const state = props.store.getState();
-
+export function Profile() {
   return (
     <div>
-      <ProfileInfo user={state.profilePage.user}/>
-      <PostsContainer store={props.store}/>
+      <UserDataContainer/>
+      <PostsContainer/>
     </div>
   );
 }

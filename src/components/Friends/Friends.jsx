@@ -2,7 +2,7 @@ import s from './Friends.module.css';
 import {Friend} from "./Friend/Friend";
 
 export function Friends(props) {
-  const friendElements = props.state.friends
+  const friendElements = props.friendsPage.friends
     .map(f => <Friend id={f.id} name={f.name} img={f.img}/>);
 
   return (
