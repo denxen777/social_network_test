@@ -18,20 +18,23 @@ const initialState = {
 };
 
 export function dialogsReducer(state = initialState, action) {
+  const copyState = Object.assign({}, state);
+
   switch (action.type) {
     case UPDATE_MESSAGE_TEXT:
-      state.messageText = action.text;
-      return state;
+      copyState.messageText = action.text;
+      return copyState;
 
     case SEND_MESSAGE:
       const message = {
         id: 4,
-        message: state.messageText,
+        message: copyState.messageText,
       };
 
-      state.messages.push(message);
-      state.messageText = '';
-      return state;
+      copyState.messages = Object.assign([], state.messages);
+      copyState.messages.push(message);
+      copyState.messageText = '';
+      return copyState;
 
     default: return state;
   }

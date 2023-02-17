@@ -7,16 +7,10 @@ import {Provider} from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-function rerenderAllTree() {
-  root.render(
-    <BrowserRouter>
-      <Provider store={reduxStore}>
-        <App/>
-      </Provider>
-    </BrowserRouter>
-  );
-}
-
-rerenderAllTree();
-
-reduxStore.subscribe(rerenderAllTree);
+root.render(
+  <BrowserRouter>
+    <Provider store={reduxStore}>
+      <App/>
+    </Provider>
+  </BrowserRouter>
+);
