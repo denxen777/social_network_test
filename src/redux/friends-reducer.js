@@ -11,7 +11,6 @@ const initialState = {
 };
 
 export function friendsReducer(state = initialState, action) {
-  const copyState = Object.assign({}, state);
 
   switch (action.type) {
     default: return state;

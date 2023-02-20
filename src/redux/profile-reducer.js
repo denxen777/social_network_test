@@ -19,14 +19,17 @@ const initialState = {
 };
 
 export function profileReducer(state = initialState, action) {
-  const copyState = Object.assign({}, state);
 
   switch (action.type) {
-    case UPDATE_POST_TEXT:
+    case UPDATE_POST_TEXT: {
+      const copyState = Object.assign({}, state);
       copyState.postText = action.text;
       return copyState;
+    }
 
-    case ADD_POST:
+    case ADD_POST: {
+      const copyState = Object.assign({}, state);
+
       const post = {
         id: 4,
         message: copyState.postText,
@@ -36,6 +39,7 @@ export function profileReducer(state = initialState, action) {
       copyState.posts.push(post);
       copyState.postText = '';
       return copyState;
+    }
 
     default:
       return state;
