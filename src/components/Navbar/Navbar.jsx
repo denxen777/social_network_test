@@ -19,6 +19,9 @@ export function Navbar() {
       <div>
         <NavLink to="/settings">Настройки</NavLink>
       </div>
+      <div>
+        <NavLink to="/users">Пользователи</NavLink>
+      </div>
     </div>
   );
 }
