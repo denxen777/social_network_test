@@ -4,8 +4,8 @@ import {Message} from "./Message/Message";
 import {Dialog} from "./Dialog/Dialog";
 
 export function Dialogs(props) {
-  const dialogsElements = props.dialogsPage.dialogs.map(d => <Dialog id={d.id} name={d.name} img={d.img}/>);
-  const messagesElements = props.dialogsPage.messages.map(m => <Message id={m.id} message={m.message}/>);
+  const dialogsElements = props.dialogsPage.dialogs.map(d => <Dialog key={d.id} name={d.name} img={d.img}/>);
+  const messagesElements = props.dialogsPage.messages.map(m => <Message key={m.id} message={m.message}/>);
 
   function onNewMessageChange(e) {
     props.updateNewMessage(e.target.value);

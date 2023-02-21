@@ -15,30 +15,25 @@ const initialState = {
     {id: 2, message: 'Quisque sapien felis, facilisis id enim a, condimentum rhoncus purus.'},
     {id: 3, message: 'Quisque posuere neque eros, nec bibendum mauris dictum nec.'},
   ],
-  postText: 'hello',
+  postText: '',
 };
 
 export function profileReducer(state = initialState, action) {
 
   switch (action.type) {
     case UPDATE_POST_TEXT: {
-      const copyState = Object.assign({}, state);
-      copyState.postText = action.text;
-      return copyState;
+      return {
+        ...state,
+        postText: action.text
+      }
     }
 
     case ADD_POST: {
-      const copyState = Object.assign({}, state);
-
-      const post = {
-        id: 4,
-        message: copyState.postText,
-      };
-
-      copyState.posts = Object.assign([], state.posts);
-      copyState.posts.push(post);
-      copyState.postText = '';
-      return copyState;
+      return {
+        ...state,
+        postText: '',
+        posts: [...state.posts, {id: 4, message: state.postText}]
+      }
     }
 
     default:

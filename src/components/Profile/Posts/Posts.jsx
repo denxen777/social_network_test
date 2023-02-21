@@ -3,7 +3,7 @@ import React from "react";
 import {Post} from "./Post/Post";
 
 export function Posts(props) {
-  const postsElements = props.profilePage.posts.map(p => <Post id={p.id} message={p.message}/>);
+  const postsElements = props.profilePage.posts.map(p => <Post key={p.id} message={p.message}/>);
 
   function onNewMessageChange(e) {
     props.updateNewMassage(e.target.value);
