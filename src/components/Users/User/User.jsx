@@ -3,7 +3,6 @@ import userPhoto from '../../../media/images/user-default.jpg';
 import {Component} from "react";
 
 export class User extends Component {
-
   render() {
     return (
       <div className={s.container}>

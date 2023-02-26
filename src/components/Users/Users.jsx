@@ -4,9 +4,7 @@ import axios from "axios";
 import {Component} from "react";
 
 export class Users extends Component {
-  constructor(props) {
-    super(props);
-
+  componentDidMount() {
     if (!this.props.users.length) {
       axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response) => {
         this.props.setUsers(response.data.items);
@@ -14,17 +12,15 @@ export class Users extends Component {
     }
   }
 
-  getUser = () => {
-    return this.props.users.map(u =>
-      <User key={u.id} id={u.id} photos={u.photos} name={u.name} status={u.status}
-            location={u.location} followed={u.followed}
-            follow={this.props.follow} unfollow={this.props.unfollow} setUsers={this.props.setUsers}/>)
-  }
-
   render() {
     return (
       <div className={s.wrapper}>
-        {this.getUser()}
+        {
+          this.props.users.map(u => <User key={u.id} id={u.id} photos={u.photos} name={u.name} status={u.status}
+                                          location={u.location} followed={u.followed}
+                                          follow={this.props.follow} unfollow={this.props.unfollow}
+                                          setUsers={this.props.setUsers}/>)
+        }
       </div>
     );
   }
