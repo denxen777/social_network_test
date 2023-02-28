@@ -3,3 +3,18 @@
   flex-direction: column;
   align-items: center;
 }
+
+.pages {
+  width: 730px;
+  overflow: scroll;
+}
+
+.activePage {
+  font-weight: 700;
+  color: #e70f0f;
+}
+
+.page {
+  padding: 10px;
+  cursor: pointer;
+}
