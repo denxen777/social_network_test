@@ -7,14 +7,16 @@
 .pages {
   width: 730px;
   overflow: scroll;
+  padding: 15px 0;
 }
 
 .activePage {
+  border-bottom: 1px solid;
   font-weight: 700;
-  color: #e70f0f;
+  color: #e35475;
 }
 
 .page {
-  padding: 10px;
+  padding: 0 10px;
   cursor: pointer;
 }
