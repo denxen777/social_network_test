@@ -1,12 +1,12 @@
 import {connect} from "react-redux";
 
 import {
-  followCreator,
-  setCurrentPageCreator,
-  setTotalUsersCountCreator,
-  setUsersCreator,
-  unfollowCreator,
-  toggleIsFetchingCreator
+  follow,
+  setCurrentPage,
+  setTotalUsersCount,
+  setUsers,
+  unfollow,
+  toggleIsFetching
 } from "../../redux/users-reducer";
 
 import {Component} from "react";
@@ -65,27 +65,7 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    follow: (userId) => {
-      dispatch(followCreator(userId));
-    },
-    unfollow: (userId) => {
-      dispatch(unfollowCreator(userId));
-    },
-    setUsers: (users) => {
-      dispatch(setUsersCreator(users));
-    },
-    setTotalUsersCount: (totalCount) => {
-      dispatch(setTotalUsersCountCreator(totalCount))
-    },
-    setCurrentPage: (page) => {
-      dispatch(setCurrentPageCreator(page));
-    },
-    toggleIsFetching: (isFetching) => {
-      dispatch(toggleIsFetchingCreator(isFetching));
-    }
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(
+  mapStateToProps,
+  {follow, unfollow, setUsers, setTotalUsersCount, setCurrentPage, toggleIsFetching}
+)(UsersContainer);
