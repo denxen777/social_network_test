@@ -1,7 +1,10 @@
-import preloader from '../../../media/images/preloader.gif';
+import preloader from '../../../media/images/preloader.svg';
+import s from './Preloader.module.css'
 
 export const Preloader = () => {
   return (
-    <img src={preloader} alt="gif"/>
+    <div className={s.preloader}>
+      <img src={preloader} alt="gif"/>
+    </div>
   );
 }

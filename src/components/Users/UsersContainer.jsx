@@ -42,10 +42,14 @@ class UsersContainer extends Component {
   render() {
     return (
       <>
-        {this.props.isFetching ? <Preloader/> : null}
-        <Users totalCount={this.props.totalCount} count={this.props.count}
-               currentPage={this.props.currentPage} onPageChange={this.onPageChange}
-               users={this.props.users} follow={this.props.follow} unfollow={this.props.unfollow}/>
+        {
+          this.props.isFetching ?
+          <Preloader/> :
+          <Users
+            totalCount={this.props.totalCount} count={this.props.count}
+            currentPage={this.props.currentPage} onPageChange={this.onPageChange}
+            users={this.props.users} follow={this.props.follow} unfollow={this.props.unfollow}/>
+        }
       </>
     );
   }
