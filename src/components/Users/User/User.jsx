@@ -1,12 +1,15 @@
 import s from './User.module.css';
 import userPhoto from '../../../media/images/user-default.jpg';
+import {NavLink} from "react-router-dom";
 
 export function User(props) {
   return (
     <div className={s.container}>
       <div className={s.wrap1}>
         <div className={s.avatar}>
-          <img src={props.photos.small !== null ? props.photos.small : userPhoto} alt="avatar"/>
+          <NavLink to={'../profile/' + props.id}>
+            <img src={props.photos.small !== null ? props.photos.small : userPhoto} alt="avatar"/>
+          </NavLink>
         </div>
         <div>
           {props.followed ?

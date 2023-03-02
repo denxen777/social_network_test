@@ -1,17 +1,20 @@
 import s from './UserData.module.css';
+import {Preloader} from "../../common/Preloader/Preloader";
 
 export function UserData(props) {
+  if (!props.profile) {
+    return <Preloader/>
+  }
+
   return (
     <div className={s.userData}>
       <div className={s.avatar}>
-        <img src={props.user.img} alt="Изображение"/>
+        <img src={props.profile.photos.large} alt="Изображение"/>
       </div>
       <div className={s.data}>
-        <p>{props.user.name}</p>
-        <p>{`Дата рождения: ${props.user.dateOfBirth}`}</p>
-        <p>{`Место работы: ${props.user.job}`}</p>
-        <p>{`Город: ${props.user.city}`}</p>
-        <p>{`Язык: ${props.user.language}`}</p>
+        <p>{props.profile.fullName}</p>
+        <p>{`Обо мне: ${props.profile.aboutMe}`}</p>
+        <p>{`Ищу работу: ${props.profile.lookingForAJob}`}</p>
       </div>
     </div>
   );

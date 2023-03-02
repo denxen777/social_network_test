@@ -1,10 +1,10 @@
-import {UserDataContainer} from "./UserData/UserDataContainer";
 import {PostsContainer} from "./Posts/PostsContainer";
+import {UserData} from "./UserData/UserData";
 
-export function Profile() {
+export function Profile(props) {
   return (
     <div>
-      <UserDataContainer/>
+      <UserData profile={props.profile}/>
       <PostsContainer/>
     </div>
   );

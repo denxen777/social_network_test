@@ -16,7 +16,7 @@ const initialState = {
 export function usersReducer(state = initialState, action) {
   switch (action.type) {
 
-    case FOLLOW:
+    case FOLLOW: {
       return {
         ...state,
         users: state.users.map(u => {
@@ -26,8 +26,9 @@ export function usersReducer(state = initialState, action) {
           return u;
         })
       };
+    }
 
-    case UNFOLLOW:
+    case UNFOLLOW: {
       return {
         ...state,
         users: state.users.map(u => {
@@ -37,30 +38,35 @@ export function usersReducer(state = initialState, action) {
           return u;
         })
       };
+    }
 
-    case SET_USERS:
+    case SET_USERS: {
       return {
         ...state,
         users: [...action.users]
       };
+    }
 
-    case SET_TOTAL_USERS_COUNT:
+    case SET_TOTAL_USERS_COUNT: {
       return {
         ...state,
         totalCount: action.totalCount
-      }
+      };
+    }
 
-    case SET_CURRENT_PAGE:
+    case SET_CURRENT_PAGE: {
       return {
         ...state,
         currentPage: action.page
-      }
+      };
+    }
 
-    case TOGGLE_IS_FETCHING:
+    case TOGGLE_IS_FETCHING: {
       return {
         ...state,
         isFetching: action.isFetching
-      }
+      };
+    }
 
     default:
       return state;
