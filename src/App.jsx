@@ -16,12 +16,12 @@ export function App() {
       <Navbar/>
       <div className='wrapper_content'>
         <Routes>
-          <Route path='/profile/*' element={<ProfileContainer/>}/>
-          <Route path='/news/*' element={<News/>}/>
-          <Route path='/dialogs/*' element={<DialogsContainer/>}/>
-          <Route path='/friends/*' element={<FriendsContainer/>}/>
-          <Route path='/settings/*' element={<Settings/>}/>
-          <Route path='/users/*' element={<UsersContainer/>}/>
+          <Route path='/profile/:userId' element={<ProfileContainer/>}/>
+          <Route path='/news' element={<News/>}/>
+          <Route path='/dialogs' element={<DialogsContainer/>}/>
+          <Route path='/friends' element={<FriendsContainer/>}/>
+          <Route path='/settings' element={<Settings/>}/>
+          <Route path='/users' element={<UsersContainer/>}/>
         </Routes>
       </div>
     </div>
