@@ -11,10 +11,10 @@ export const Users = (props) => {
     <div className={s.wrapper}>
       <div className={s.pages}>
         {
-          pagesArray.map(page => {
+          pagesArray.map((page, index) => {
             return (page === props.currentPage) ?
-              <span className={`${s.activePage} ${s.page}`}>{page}</span> :
-              <span className={s.page} onClick={() => props.onPageChange(page)}>{page}</span>
+              <span key={index} className={`${s.activePage} ${s.page}`}>{page}</span> :
+              <span key={index} className={s.page} onClick={() => props.onPageChange(page)}>{page}</span>
           })
         }
       </div>
