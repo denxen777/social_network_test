@@ -22,7 +22,8 @@ export const Users = (props) => {
         props.users.map(user =>
           <User key={user.id} id={user.id} photos={user.photos} name={user.name} status={user.status}
                 location={user.location} followed={user.followed}
-                follow={props.follow} unfollow={props.unfollow}/>)
+                follow={props.follow} unfollow={props.unfollow} followingInProgress={props.followingInProgress}
+                toggleIsDisable={props.toggleIsDisable}/>)
       }
     </div>
   );

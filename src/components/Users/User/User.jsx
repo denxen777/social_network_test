@@ -8,25 +8,31 @@ export function User(props) {
     <div className={s.container}>
       <div className={s.wrap1}>
         <div className={s.avatar}>
-          <NavLink to={'../profile/' + props.id}>
+          <NavLink to={'/profile/' + props.id}>
             <img src={props.photos.small !== null ? props.photos.small : userPhoto} alt="avatar"/>
           </NavLink>
         </div>
         <div>
           {
             props.followed ?
-              <button onClick={() => {
+              <button disabled={props.followingInProgress.includes(props.id)} onClick={() => {
+                props.toggleIsDisable(true, props.id);
+
                 setUnfollow(props.id).then(data => {
                   if (data.resultCode === 0) {
                     props.unfollow(props.id);
+                    props.toggleIsDisable(false, props.id);
                   }
                 });
               }}>Отписаться</button> :
 
-              <button onClick={() => {
+              <button disabled={props.followingInProgress.includes(props.id)} onClick={() => {
+                props.toggleIsDisable(true, props.id);
+
                 setFollow(props.id).then(data => {
                   if (data.resultCode === 0) {
                     props.follow(props.id);
+                    props.toggleIsDisable(false, props.id);
                   }
                 });
               }}>Подписаться</button>

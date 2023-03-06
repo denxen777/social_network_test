@@ -4,13 +4,15 @@ const SET_USERS = 'SET-USERS';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
+const IS_DISABLE = 'IS-DISABLE';
 
 const initialState = {
   users: [],
   count: 3,
   totalCount: 0,
   currentPage: 1,
-  isFetching: false
+  isFetching: false,
+  followingInProgress: []
 };
 
 export function usersReducer(state = initialState, action) {
@@ -68,6 +70,15 @@ export function usersReducer(state = initialState, action) {
       };
     }
 
+    case IS_DISABLE: {
+      return {
+        ...state,
+        followingInProgress: action.disable ?
+          [...state.followingInProgress, action.userId] :
+          state.followingInProgress.filter(id => id !== action.userId)
+      };
+    }
+
     default:
       return state;
   }
@@ -102,3 +113,9 @@ export const toggleIsFetching = (isFetching) => ({
   type: TOGGLE_IS_FETCHING,
   isFetching
 });
+
+export const toggleIsDisable = (disable, userId) => ({
+  type: IS_DISABLE,
+  disable,
+  userId
+})
