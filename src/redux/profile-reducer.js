@@ -1,3 +1,6 @@
+import {profileAPI} from "../api/api";
+
+//Action Type
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
@@ -12,6 +15,7 @@ const initialState = {
   postText: '',
 };
 
+//Reducer
 export function profileReducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_POST_TEXT: {
@@ -41,6 +45,7 @@ export function profileReducer(state = initialState, action) {
   }
 }
 
+//Action Creators
 export const updatePostTextCreator = (text) => ({
   type: UPDATE_POST_TEXT,
   text
@@ -54,3 +59,12 @@ export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
   profile
 });
+
+//Thunk
+export const getProfile = (params) => {
+  return (dispatch) => {
+    profileAPI.getProfile(params).then(data => {
+      dispatch(setUserProfile(data))
+    });
+  }
+}

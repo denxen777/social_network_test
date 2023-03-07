@@ -1,7 +1,6 @@
 import s from './User.module.css';
 import userPhoto from '../../../media/images/user-default.jpg';
 import {NavLink} from "react-router-dom";
-import {setFollow, setUnfollow} from "../../../api/api";
 
 export function User(props) {
   return (
@@ -16,25 +15,11 @@ export function User(props) {
           {
             props.followed ?
               <button disabled={props.followingInProgress.includes(props.id)} onClick={() => {
-                props.toggleIsDisable(true, props.id);
-
-                setUnfollow(props.id).then(data => {
-                  if (data.resultCode === 0) {
-                    props.unfollow(props.id);
-                    props.toggleIsDisable(false, props.id);
-                  }
-                });
+                props.unfollow(props.id);
               }}>Отписаться</button> :
 
               <button disabled={props.followingInProgress.includes(props.id)} onClick={() => {
-                props.toggleIsDisable(true, props.id);
-
-                setFollow(props.id).then(data => {
-                  if (data.resultCode === 0) {
-                    props.follow(props.id);
-                    props.toggleIsDisable(false, props.id);
-                  }
-                });
+                props.follow(props.id);
               }}>Подписаться</button>
           }
         </div>

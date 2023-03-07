@@ -1,40 +1,17 @@
 import {connect} from "react-redux";
-import {
-  follow,
-  setCurrentPage,
-  setTotalUsersCount,
-  setUsers,
-  unfollow,
-  toggleIsFetching,
-  toggleIsDisable
-} from "../../redux/users-reducer";
+import {getUsers, follow, unfollow} from "../../redux/users-reducer";
 import {Component} from "react";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
-import {getUser} from "../../api/api";
 
 
 class UsersContainer extends Component {
   componentDidMount() {
-    if (!this.props.users.length) {
-      this.props.toggleIsFetching(true);
-
-      getUser(this.props.currentPage, this.props.count).then((data) => {
-        this.props.setUsers(data.items);
-        this.props.setTotalUsersCount(data.totalCount);
-        this.props.toggleIsFetching(false);
-      });
-    }
+    this.props.getUsers(this.props.currentPage, this.props.count);
   }
 
   onPageChange = (page) => {
-    this.props.toggleIsFetching(true);
-    this.props.setCurrentPage(page);
-
-    getUser(page, this.props.count).then((data) => {
-      this.props.setUsers(data.items);
-      this.props.toggleIsFetching(false);
-    });
+    this.props.getUsers(page, this.props.count);
   }
 
   render() {
@@ -43,11 +20,10 @@ class UsersContainer extends Component {
         {
           this.props.isFetching ?
             <Preloader/> :
-            <Users
-              totalCount={this.props.totalCount} count={this.props.count}
-              currentPage={this.props.currentPage} onPageChange={this.onPageChange}
-              users={this.props.users} follow={this.props.follow} unfollow={this.props.unfollow}
-              followingInProgress={this.props.followingInProgress} toggleIsDisable={this.props.toggleIsDisable}/>
+            <Users totalCount={this.props.totalCount} count={this.props.count}
+                   onPageChange={this.onPageChange} users={this.props.users}
+                   followingInProgress={this.props.followingInProgress} currentPage={this.props.currentPage}
+                   follow={this.props.follow} unfollow={this.props.unfollow}/>
         }
       </>
     );
@@ -66,6 +42,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps,
-  {follow, unfollow, setUsers, setTotalUsersCount, setCurrentPage, toggleIsFetching, toggleIsDisable}
-)(UsersContainer);
+export default connect(mapStateToProps, {getUsers, follow, unfollow})(UsersContainer);

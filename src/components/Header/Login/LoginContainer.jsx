@@ -1,17 +1,11 @@
 import {connect} from "react-redux";
 import {Component} from "react";
 import {Login} from "./Login";
-import {setAuthUserData} from "../../../redux/auth-reducer";
-import {auth} from "../../../api/api";
+import {authorization, setAuthUserData} from "../../../redux/auth-reducer";
 
 class LoginContainer extends Component {
   componentDidMount() {
-    auth().then(data => {
-      if (data.resultCode === 0) {
-        const {id, login, email} = data.data;
-        this.props.setAuthUserData(id, login, email);
-      }
-    });
+    this.props.authorization();
   }
 
   render() {
@@ -28,4 +22,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {setAuthUserData})(LoginContainer);
+export default connect(mapStateToProps, {setAuthUserData, authorization})(LoginContainer);

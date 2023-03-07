@@ -1,3 +1,6 @@
+import {usersAPI} from "../api/api";
+
+//Action Type
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
@@ -15,6 +18,7 @@ const initialState = {
   followingInProgress: []
 };
 
+//Reducer
 export function usersReducer(state = initialState, action) {
   switch (action.type) {
 
@@ -84,12 +88,13 @@ export function usersReducer(state = initialState, action) {
   }
 }
 
-export const follow = (userId) => ({
+//Action Creators
+export const acceptFollow = (userId) => ({
   type: FOLLOW,
   userId
 });
 
-export const unfollow = (userId) => ({
+export const acceptUnfollow = (userId) => ({
   type: UNFOLLOW,
   userId
 });
@@ -119,3 +124,43 @@ export const toggleIsDisable = (disable, userId) => ({
   disable,
   userId
 })
+
+//Thunk
+export const getUsers = (currentPage, count) => {
+  return (dispatch) => {
+    dispatch(toggleIsFetching(true));
+
+    usersAPI.getUsers(currentPage, count).then((data) => {
+      dispatch(setCurrentPage(currentPage));
+      dispatch(setUsers(data.items));
+      dispatch(setTotalUsersCount(data.totalCount));
+      dispatch(toggleIsFetching(false));
+    });
+  }
+}
+
+export const follow = (userId) => {
+  return (dispatch) => {
+    dispatch(toggleIsDisable(true, userId));
+
+    usersAPI.follow(userId).then(data => {
+      if (data.resultCode === 0) {
+        dispatch(acceptFollow(userId));
+        dispatch(toggleIsDisable(false, userId));
+      }
+    });
+  };
+}
+
+export const unfollow = (userId) => {
+  return (dispatch) => {
+    dispatch(toggleIsDisable(true, userId));
+
+    usersAPI.unfollow(userId).then(data => {
+      if (data.resultCode === 0) {
+        dispatch(acceptUnfollow(userId));
+        dispatch(toggleIsDisable(false, userId));
+      }
+    });
+  };
+}

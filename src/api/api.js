@@ -8,22 +8,26 @@ const instance = axios.create({
   }
 });
 
-export function getUser(currentPage, count) {
-  return instance.get(`users?page=${currentPage}&count=${count}`).then(response => response.data);
+export const usersAPI = {
+  getUsers(currentPage, count) {
+    return instance.get(`users?page=${currentPage}&count=${count}`).then(response => response.data);
+  },
+  follow(id) {
+    return instance.post(`follow/${id}`).then(response => response.data);
+  },
+  unfollow(id) {
+    return instance.delete(`follow/${id}`).then(response => response.data);
+  }
 }
 
-export function setFollow(id) {
-  return instance.post(`follow/${id}`).then(response => response.data);
+export const profileAPI = {
+  getProfile(params) {
+    return instance.get(`profile/${params}`).then(response => response.data);
+  }
 }
 
-export function setUnfollow(id) {
-  return instance.delete(`follow/${id}`).then(response => response.data);
-}
-
-export function getProfile(params) {
-  return instance.get(`profile/${params}`).then(response => response.data);
-}
-
-export function auth() {
-  return instance.get(`auth/me`).then(response => response.data);
+export const authAPI = {
+  auth() {
+    return instance.get(`auth/me`).then(response => response.data);
+  }
 }
