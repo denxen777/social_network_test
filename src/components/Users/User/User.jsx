@@ -8,7 +8,7 @@ export function User(props) {
       <div className={s.wrap1}>
         <div className={s.avatar}>
           <NavLink to={'/profile/' + props.id}>
-            <img src={props.photos.small !== null ? props.photos.small : userPhoto} alt="avatar"/>
+            <img src={props.photos.small ? props.photos.small : userPhoto} alt="avatar"/>
           </NavLink>
         </div>
         <div>
@@ -26,12 +26,8 @@ export function User(props) {
       </div>
       <div className={s.wrap2}>
         <div className={s.wrap3}>
-          <div>{props.name}</div>
-          <br/>
-          <div>{props.status}</div>
-        </div>
-        <div>
-          {'props.location.city' + ', ' + 'props.location.country'}
+          <div><span className={s.title}>Имя:</span> {props.name}</div>
+          <div><span className={s.title}>Статус:</span> {props.status}</div>
         </div>
       </div>
     </div>

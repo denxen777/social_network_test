@@ -33,7 +33,7 @@ export const setAuthUserData = (id, login, email) => ({
 })
 
 //Thunk
-export const authorization = () => {
+export const getAuthUserData = () => {
   return (dispatch) => {
     authAPI.auth().then(data => {
       if (data.resultCode === 0) {

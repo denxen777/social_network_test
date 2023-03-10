@@ -21,7 +21,7 @@
 
 .wrap2 {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   width: 60%;
   color: grey;
@@ -32,4 +32,9 @@
   height: 60%;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.title {
+  font-weight: 700;
+  text-decoration: underline;
 }

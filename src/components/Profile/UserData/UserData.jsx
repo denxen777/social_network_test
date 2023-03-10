@@ -1,5 +1,6 @@
 import s from './UserData.module.css';
 import {Preloader} from "../../common/Preloader/Preloader";
+import userPhoto from '../../../media/images/user-default.jpg';
 
 export function UserData(props) {
   if (!props.profile) {
@@ -9,7 +10,7 @@ export function UserData(props) {
   return (
     <div className={s.userData}>
       <div className={s.avatar}>
-        <img src={props.profile.photos.large} alt="Изображение"/>
+        <img src={props.profile.photos.large ? props.profile.photos.large : userPhoto} alt="Изображение"/>
       </div>
       <div className={s.data}>
         <p>{props.profile.fullName}</p>

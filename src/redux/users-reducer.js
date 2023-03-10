@@ -1,8 +1,8 @@
 import {usersAPI} from "../api/api";
 
 //Action Type
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
+const ACCEPT_FOLLOW = 'ACCEPT_FOLLOW';
+const ACCEPT_UNFOLLOW = 'ACCEPT_UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
@@ -22,7 +22,7 @@ const initialState = {
 export function usersReducer(state = initialState, action) {
   switch (action.type) {
 
-    case FOLLOW: {
+    case ACCEPT_FOLLOW: {
       return {
         ...state,
         users: state.users.map(u => {
@@ -34,7 +34,7 @@ export function usersReducer(state = initialState, action) {
       };
     }
 
-    case UNFOLLOW: {
+    case ACCEPT_UNFOLLOW: {
       return {
         ...state,
         users: state.users.map(u => {
@@ -90,12 +90,12 @@ export function usersReducer(state = initialState, action) {
 
 //Action Creators
 export const acceptFollow = (userId) => ({
-  type: FOLLOW,
+  type: ACCEPT_FOLLOW,
   userId
 });
 
 export const acceptUnfollow = (userId) => ({
-  type: UNFOLLOW,
+  type: ACCEPT_UNFOLLOW,
   userId
 });
 
