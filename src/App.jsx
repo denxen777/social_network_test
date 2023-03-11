@@ -8,6 +8,7 @@ import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import {FriendsContainer} from "./components/Friends/FriendsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import {Login} from "./components/Login/Login";
 
 export function App() {
   return (
@@ -22,6 +23,7 @@ export function App() {
           <Route path='/friends' element={<FriendsContainer/>}/>
           <Route path='/settings' element={<Settings/>}/>
           <Route path='/users' element={<UsersContainer/>}/>
+          <Route path='/login' element={<Login/>}/>
         </Routes>
       </div>
     </div>
