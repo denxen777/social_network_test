@@ -89,37 +89,37 @@ export function usersReducer(state = initialState, action) {
 }
 
 //Action Creators
-export const acceptFollow = (userId) => ({
+const acceptFollow = (userId) => ({
   type: ACCEPT_FOLLOW,
   userId
 });
 
-export const acceptUnfollow = (userId) => ({
+const acceptUnfollow = (userId) => ({
   type: ACCEPT_UNFOLLOW,
   userId
 });
 
-export const setUsers = (users) => ({
+const setUsers = (users) => ({
   type: SET_USERS,
   users
 });
 
-export const setTotalUsersCount = (totalCount) => ({
+const setTotalUsersCount = (totalCount) => ({
   type: SET_TOTAL_USERS_COUNT,
   totalCount
 });
 
-export const setCurrentPage = (page) => ({
+const setCurrentPage = (page) => ({
   type: SET_CURRENT_PAGE,
   page
 });
 
-export const toggleIsFetching = (isFetching) => ({
+const toggleIsFetching = (isFetching) => ({
   type: TOGGLE_IS_FETCHING,
   isFetching
 });
 
-export const toggleIsDisable = (disable, userId) => ({
+const toggleIsDisable = (disable, userId) => ({
   type: IS_DISABLE,
   disable,
   userId

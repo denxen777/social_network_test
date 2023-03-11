@@ -18,7 +18,6 @@ const initialState = {
 };
 
 export function dialogsReducer(state = initialState, action) {
-
   switch (action.type) {
     case UPDATE_MESSAGE_TEXT: {
       return {
