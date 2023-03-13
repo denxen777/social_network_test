@@ -4,7 +4,7 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import {Navbar} from "./components/Navbar/Navbar";
 import {News} from "./components/News/News";
 import {Settings} from "./components/Settings/Settings";
-import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {FriendsContainer} from "./components/Friends/FriendsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";

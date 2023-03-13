@@ -2,7 +2,6 @@ import s from './Dialogs.module.css';
 import React from "react";
 import {Message} from "./Message/Message";
 import {Dialog} from "./Dialog/Dialog";
-import {Navigate} from "react-router-dom";
 
 export function Dialogs(props) {
   const dialogsElements = props.dialogsPage.dialogs.map(d => <Dialog key={d.id} name={d.name} img={d.img}/>);
@@ -14,10 +13,6 @@ export function Dialogs(props) {
 
   function onSendMessageClick() {
     props.sendMessage();
-  }
-
-  if (!props.isAuth) {
-    return <Navigate to={'/login'}/>
   }
 
   return (
