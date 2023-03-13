@@ -4,6 +4,18 @@ import {Component} from "react";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
+
+function mapStateToProps(state) {
+  return {
+    users: state.usersPage.users,
+    count: state.usersPage.count,
+    totalCount: state.usersPage.totalCount,
+    currentPage: state.usersPage.currentPage,
+    isFetching: state.usersPage.isFetching,
+    followingInProgress: state.usersPage.followingInProgress
+  };
+}
 
 class UsersContainer extends Component {
   componentDidMount() {
@@ -30,16 +42,7 @@ class UsersContainer extends Component {
   }
 }
 
-
-function mapStateToProps(state) {
-  return {
-    users: state.usersPage.users,
-    count: state.usersPage.count,
-    totalCount: state.usersPage.totalCount,
-    currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
-    followingInProgress: state.usersPage.followingInProgress
-  };
-}
-
-export default withAuthRedirect(connect(mapStateToProps, {getUsers, follow, unfollow})(UsersContainer));
+export default compose(
+  connect(mapStateToProps, {getUsers, follow, unfollow}),
+  withAuthRedirect
+)(UsersContainer);

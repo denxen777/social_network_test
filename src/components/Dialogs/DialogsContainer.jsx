@@ -2,6 +2,7 @@ import {Dialogs} from "./Dialogs";
 import {sendMessageCreator, updateMessageTextCreator} from "../../redux/dialogs-reducer";
 import {connect} from "react-redux";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 function mapStateToProps(state) {
   return {
@@ -11,7 +12,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    updateNewMessage : (text) => {
+    updateNewMessage: (text) => {
       dispatch(updateMessageTextCreator(text));
     },
     sendMessage: () => {
@@ -20,4 +21,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withAuthRedirect(connect(mapStateToProps, mapDispatchToProps)(Dialogs));
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withAuthRedirect
+)(Dialogs);
