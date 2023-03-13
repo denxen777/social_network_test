@@ -14,12 +14,13 @@ export class UserStatus extends Component {
   render() {
     return (
       <>
-        <div>
-          {!this.state.editMode && <span onDoubleClick={this.toggleEditMode}>{this.props.status}</span>}
-        </div>
-        <div>
-          {this.state.editMode && <input onBlur={this.toggleEditMode} type="text" value={this.props.status}/>}
-        </div>
+        {!this.state.editMode && <div>
+          <span onDoubleClick={this.toggleEditMode}>{this.props.status}</span>
+        </div>}
+
+        {this.state.editMode && <div>
+          <input autoFocus={true} onBlur={this.toggleEditMode} type="text" value={this.props.status}/>
+        </div>}
       </>
     );
   }
