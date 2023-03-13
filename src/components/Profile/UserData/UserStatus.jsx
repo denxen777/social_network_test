@@ -15,7 +15,7 @@ export class UserStatus extends Component {
     return (
       <>
         {!this.state.editMode && <div>
-          <span onDoubleClick={this.toggleEditMode}>{this.props.status}</span>
+          <span onDoubleClick={this.toggleEditMode}>Статус: {this.props.status}</span>
         </div>}
 
         {this.state.editMode && <div>

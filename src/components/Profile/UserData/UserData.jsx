@@ -17,7 +17,7 @@ export function UserData(props) {
         <p>{props.profile.fullName}</p>
         <p>{`Обо мне: ${props.profile.aboutMe}`}</p>
         <p>{`Ищу работу: ${props.profile.lookingForAJob}`}</p>
-        <UserStatus status={'hello'}/>
+        <UserStatus status={props.status}/>
       </div>
     </div>
   );

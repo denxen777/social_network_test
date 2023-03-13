@@ -4,6 +4,7 @@ import {profileAPI} from "../api/api";
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const SET_STATUS = 'SET_STATUS';
 
 const initialState = {
   profile: null,
@@ -13,6 +14,7 @@ const initialState = {
     {id: 3, message: 'Quisque posuere neque eros, nec bibendum mauris dictum nec.'},
   ],
   postText: '',
+  status: ''
 };
 
 //Reducer
@@ -40,6 +42,13 @@ export function profileReducer(state = initialState, action) {
       };
     }
 
+    case SET_STATUS: {
+      return {
+        ...state,
+        status: action.status
+      };
+    }
+
     default:
       return state;
   }
@@ -60,11 +69,24 @@ const setUserProfile = (profile) => ({
   profile
 });
 
+const setStatus = (status) => ({
+  type: SET_STATUS,
+  status
+});
+
 //Thunk
 export const getProfile = (params) => {
   return (dispatch) => {
     profileAPI.getProfile(params).then(data => {
       dispatch(setUserProfile(data))
+    });
+  }
+}
+
+export const getStatus = (id) => {
+  return (dispatch) => {
+    profileAPI.getStatus(id).then(data => {
+      dispatch(setStatus(data))
     });
   }
 }
