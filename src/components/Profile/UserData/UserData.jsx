@@ -1,6 +1,7 @@
 import s from './UserData.module.css';
 import {Preloader} from "../../common/Preloader/Preloader";
 import userPhoto from '../../../media/images/user-default.jpg';
+import {UserStatus} from "./UserStatus";
 
 export function UserData(props) {
   if (!props.profile) {
@@ -16,6 +17,7 @@ export function UserData(props) {
         <p>{props.profile.fullName}</p>
         <p>{`Обо мне: ${props.profile.aboutMe}`}</p>
         <p>{`Ищу работу: ${props.profile.lookingForAJob}`}</p>
+        <UserStatus status={'hello'}/>
       </div>
     </div>
   );
