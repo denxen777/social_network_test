@@ -4,7 +4,7 @@ import {UserData} from "./UserData/UserData";
 export function Profile(props) {
   return (
     <div>
-      <UserData profile={props.profile} status={props.status}/>
+      <UserData profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
       <PostsContainer/>
     </div>
   );

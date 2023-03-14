@@ -45,7 +45,7 @@ export function profileReducer(state = initialState, action) {
     case SET_STATUS: {
       return {
         ...state,
-        status: action.status
+        status: action.status ? action.status : '---'
       };
     }
 
@@ -78,7 +78,7 @@ const setStatus = (status) => ({
 export const getProfile = (params) => {
   return (dispatch) => {
     profileAPI.getProfile(params).then(data => {
-      dispatch(setUserProfile(data))
+      dispatch(setUserProfile(data));
     });
   }
 }
@@ -86,7 +86,15 @@ export const getProfile = (params) => {
 export const getStatus = (id) => {
   return (dispatch) => {
     profileAPI.getStatus(id).then(data => {
-      dispatch(setStatus(data))
+      dispatch(setStatus(data));
+    });
+  }
+}
+
+export const updateStatus = (status) => {
+  return (dispatch) => {
+    profileAPI.updateStatus(status).then(data => {
+      if (data.resultCode === 0) dispatch(setStatus(status));
     });
   }
 }

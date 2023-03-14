@@ -2,12 +2,26 @@ import {Component} from "react";
 
 export class UserStatus extends Component {
   state = {
-    editMode: false
+    editMode: false,
+    status: this.props.status
   }
 
-  toggleEditMode = () => {
+  activateEditMode = () => {
     this.setState({
-      editMode: !this.state.editMode
+      editMode: true
+    });
+  }
+
+  deactivateEditMode = () => {
+    this.setState({
+      editMode: false
+    });
+    this.props.updateStatus(this.state.status);
+  }
+
+  onStatusChange = (e) => {
+    this.setState({
+      status: e.target.value
     });
   }
 
@@ -15,11 +29,16 @@ export class UserStatus extends Component {
     return (
       <>
         {!this.state.editMode && <div>
-          <span onDoubleClick={this.toggleEditMode}>Статус: {this.props.status}</span>
+          <span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
         </div>}
 
         {this.state.editMode && <div>
-          <input autoFocus={true} onBlur={this.toggleEditMode} type="text" value={this.props.status}/>
+          <input
+            type="text"
+            autoFocus={true}
+            onChange={this.onStatusChange}
+            onBlur={this.deactivateEditMode}
+            value={this.state.status}/>
         </div>}
       </>
     );
