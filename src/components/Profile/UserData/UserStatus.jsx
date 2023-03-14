@@ -25,6 +25,14 @@ export class UserStatus extends Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.status !== this.props.status) {
+      this.setState({
+        status: this.props.status
+      });
+    }
+  }
+
   render() {
     return (
       <>
